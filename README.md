@@ -10,9 +10,9 @@ No Android Studio, no admin rights, works behind corporate proxies and SSL inspe
 .\open.ps1 localhost:3000    # boots the emulator, opens your dev server in its Chrome, opens chrome://inspect on your PC
 ```
 
-<!-- Demo GIF: record setup -> open -> DevTools and save it as docs/demo.gif, then uncomment:
-![demo](docs/demo.gif)
--->
+<p align="center">
+  <img src="docs/demo.gif" width="280" alt="open.ps1 localhost:3000: the emulator's Chrome loads the dev server running on the PC, as a secure context">
+</p>
 
 ## Why
 

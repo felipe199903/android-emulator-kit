@@ -10,6 +10,10 @@ Sem Android Studio, sem admin, funciona atrás de proxy corporativo e inspeção
 .\open.ps1 localhost:3000    # sobe o emulador, abre seu dev server no Chrome dele e o chrome://inspect no PC
 ```
 
+<p align="center">
+  <img src="docs/demo.gif" width="280" alt="open.ps1 localhost:3000: o Chrome do emulador carrega o dev server rodando no PC, como contexto seguro">
+</p>
+
 ## Por quê
 
 - **Seu `localhost` funciona no celular.** O `open.ps1` encaminha a porta com `adb reverse`, então a página mantém a
