@@ -70,13 +70,15 @@ O kit sempre usa `emulator-5554`, então continua funcionando com um celular fí
 
 ```powershell
 .\inspect.ps1 webview -Package com.exemplo.app  # confirma WebView ativa e abre o chrome://inspect
+.\inspect.ps1 webview                           # lista todos os alvos do DevTools (Chrome + WebViews de apps)
 .\inspect.ps1 logs    -Package com.exemplo.app  # logcat só do app, salvo em out\ (sobrevive a reinícios do app)
 .\inspect.ps1 crash                             # crashes + ANRs recentes com stack trace
 .\inspect.ps1 ui                                # árvore de UI (XML) + screenshot em out\
-.\inspect.ps1 record                            # grava a tela (Enter para parar)
+.\inspect.ps1 record                            # grava a tela em out\ (Enter para parar; o Android limita a 3 min)
 ```
 
 - Para descobrir o pacote: `adb shell pm list packages -3`.
+- Tudo que os scripts geram (logs, screenshots, gravações) fica em `out\`, que está no `.gitignore`.
 - Apps **React Native / Flutter** puros não usam WebView; use `ui`, `logs` e `crash`.
 - Arraste um `.apk` para a janela do emulador para instalar direto.
 
@@ -104,6 +106,8 @@ O kit sempre usa `emulator-5554`, então continua funcionando com um celular fí
 - Android SDK em `%LOCALAPPDATA%\Android\Sdk` (ou `ANDROID_HOME`), AVD em `~\.android\avd`.
 - JDK portátil e cópia do truststore com o certificado corporativo (se necessário) em `%LOCALAPPDATA%\android-kit`.
 - `ANDROID_HOME` e entradas no `PATH` do usuário para `platform-tools`, `emulator` e `cmdline-tools`.
+- Dentro do emulador, o `open.ps1` grava flags do Chrome que pulam as telas de primeiro uso e marca o Chrome como app
+  de debug persistente (`am set-debug-app --persistent`). `.\start.ps1 -Wipe` desfaz os dois.
 
 ## Configuração
 

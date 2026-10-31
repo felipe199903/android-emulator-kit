@@ -34,7 +34,7 @@ if ($CorpCaCert) {
     $store = Join-Path $KitHome 'cacerts'
     New-Item -ItemType Directory -Force $KitHome | Out-Null
     Copy-Item (Join-Path $javaHome 'lib\security\cacerts') $store -Force
-    & keytool -importcert -noprompt -alias corp-ca -file $CorpCaCert -keystore $store -storepass changeit
+    & (Join-Path $javaHome 'bin\keytool.exe') -importcert -noprompt -alias corp-ca -file $CorpCaCert -keystore $store -storepass changeit
     if ($LASTEXITCODE -ne 0) { throw "keytool failed to import $CorpCaCert" }
     $env:JAVA_TOOL_OPTIONS = "-Djavax.net.ssl.trustStore=$store -Djavax.net.ssl.trustStorePassword=changeit"
 }
